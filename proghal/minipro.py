@@ -49,7 +49,6 @@ class Minipro(prog.Prog):
         args = [self.path, '-p', device, '-r', tmpfn]
         if cfg.get("force"):
             args.append("-y")
-        print(" ".join(args))
         subprocess.check_call(args, stdout=stdout, stderr=stderr)
         return {"code": open(tmpfn, 'rb').read()}
 
