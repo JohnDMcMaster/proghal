@@ -37,14 +37,14 @@ class Minipro(prog.Prog):
         if 0:
             return subprocess.STDOUT, subprocess.STDOUT
         else:
-            # return subprocess.DEVNULL, subprocess.DEVNULL
-            return open(os.devnull, 'wb'), open(os.devnull, 'wb')
+            return subprocess.DEVNULL, subprocess.DEVNULL
+            #return open(os.devnull, 'wb'), open(os.devnull, 'wb')
 
     def read(self, cfg={}):
         device = cfg.get("device")
         if device is None:
             raise ValueError("Device required")
-        tmpfn = '/tmp/uvminipro.bin'
+        tmpfn = '/tmp/uvminipror.bin'
         stdout, stderr = self.files()
         args = [self.path, '-p', device, '-r', tmpfn]
         if cfg.get("force"):
@@ -56,6 +56,9 @@ class Minipro(prog.Prog):
         device = cfg.get("device")
         if device is None:
             raise ValueError("Device required")
-        tmpfn = '/tmp/uvminipro.bin'
-        open(tmpfn, 'w').write(cfg["code"])
-        subprocess.check_call([self.path, '-p', device, '-w', tmpfn])
+        tmpfn = '/tmp/uvminiprow.bin'
+        open(tmpfn, 'wb').write(cfg["code"])
+        args = [self.path, '-p', device, '-w', tmpfn]
+        if cfg.get("force"):
+            args.append("-y")
+        subprocess.check_call(args)

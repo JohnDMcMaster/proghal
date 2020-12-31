@@ -47,6 +47,6 @@ def apply_init_args(args, cfg):
 
 def apply_run_args(args, cfg, operation):
     # FIXME: only supported for now
-    assert operation == "read"
+    assert operation == "read" or operation == "write"
     apply_arg(args, "device", cfg)
     apply_arg(args, "force", cfg)
