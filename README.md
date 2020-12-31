@@ -6,9 +6,9 @@ As of 2020-12-30 this framework is still very preliminary.
 
 Sample:
 
-  ./main.py --prog minipro --device "27C64 @DIP28" --out out.bin read
-  ./main.py --prog  --device "at89c51" --out out.bin read
-  ./main.py --prog bpwahk --out out.bin read
+    ./main.py --prog minipro --device "27C64 @DIP28" --out out.bin read
+    ./main.py --prog  --device "at89c51" --out out.bin read
+    ./main.py --prog bpwahk --out out.bin read
 
 Note that every device repesents it's device naming / database differently.
 No effort is made to normalize them between programmers.
@@ -19,4 +19,23 @@ Terms:
 * write: write given memory region(s). Does not include erase
 * read: read given memory region(s)
 * lock: write one or more lock bits
+
+# Installation
+
+    cd ~
+        
+    git clone https://github.com/JohnDMcMaster/bpwahk.git
+    pushd bpwahk
+    sudo python3 setup.py install
+    popd
+
+    git clone https://github.com/JohnDMcMaster/bpmicro.git
+    pushd bpmicro
+    sudo python3 setup.py install
+    popd
+    
+    git clone https://github.com/JohnDMcMaster/proghal.git
+    pushd proghal
+    sudo python3 setup.py install
+    popd
 
